@@ -1,6 +1,36 @@
+//O(n) - Solutions
 const transactions = [1, 2, 5];
 const userId = 1;
 
+const operationsTime = (transactions, userId) => {
+  let t = 0;
+  let completedOperations = new Array(transactions.length).fill(0);
+
+  let i = 0;
+  //O(n)
+  while (transactions[userId] > 0 && i < transactions.length) {
+    if (transactions[i] > 0) {
+      transactions[i]--;
+      completedOperations[i]++;
+      t++;
+    }
+
+    console.log(`t= ${t}`);
+    console.log(`Operaciones necesarias: ${transactions}`);
+    console.log(`Operaciones realizadas: ${completedOperations}`);
+
+    i++;
+    if (i === transactions.length) {
+      i = 0;
+    }
+  }
+
+  return t;
+};
+
+const time = operationsTime(transactions, userId);
+
+/*O(n2) Solution
 const operationsTime = (transactions, userId) => {
   let t = 0;
   let completedOperations = new Array(transactions.length).fill(0);
@@ -30,3 +60,5 @@ const operationsTime = (transactions, userId) => {
 };
 
 const time = operationsTime(transactions, userId);
+console.log(time);*/
+
